@@ -39,6 +39,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'EasyUsers',
     'EasyProducts',
+    'rest_framework',
+    'dj_rest_auth',
+    'rest_framework.authtoken',
 ]
 
 MIDDLEWARE = [
@@ -125,3 +128,10 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTH_USER_MODEL = 'EasyUsers.User'
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES':{
+        'dj_rest_auth.jwt_auth.JWTCookieAuthentication',
+    }  
+}
+

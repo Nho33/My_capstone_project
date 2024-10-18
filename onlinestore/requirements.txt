@@ -1,0 +1,5 @@
+django
+rest_framework
+dj-rest-auth
+rest_framework.authtoken
+djangorestframework-simplejwt
