@@ -1,14 +1,14 @@
-from rest_framework.serializers import ModelSerializer
+from rest_framework import serializers
 from EasyProducts.models import Product, Category
 
-class CategorySerializer(ModelSerializer):
+class CategorySerializer(serializers.ModelSerializer):
     class Meta:
         model = Category
         fields = '__all__'
 
-class ProductSerializer(ModelSerializer):
+class ProductSerializer(serializers.ModelSerializer):
     class Meta:
         model = Product
-        fields = ["name", "price", "description"]
+        fields = '__all__'
         
 

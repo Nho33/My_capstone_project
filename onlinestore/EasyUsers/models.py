@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser, BaseUserManager
+from EasyProducts.models import Product
 
 # Create your models here.
 class UserManager(BaseUserManager):

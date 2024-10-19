@@ -1,6 +1,6 @@
 from rest_framework import generics
 from EasyUsers.models import Customer, Order
-from users.serializers import CustomerSerializer, OrderSerializer
+from .serializers import CustomerSerializer, OrderSerializer
 
 class CustomerList(generics.ListCreateAPIView):
     queryset = Customer.objects.all()

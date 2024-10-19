@@ -1,5 +1,5 @@
 from rest_framework import generics
-from products.serializers import ProductSerializer, CategorySerializer
+from .serializers import ProductSerializer, CategorySerializer
 from EasyProducts.models import Product, Category
 from django.http import HttpResponse
 
