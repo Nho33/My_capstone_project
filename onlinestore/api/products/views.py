@@ -1,11 +1,23 @@
-from rest_framework import viewsets
-from .serializers import ProductSerializer
-from EasyProducts.models import Product
+from rest_framework import generics
+from products.serializers import ProductSerializer, CategorySerializer
+from EasyProducts.models import Product, Category
 from django.http import HttpResponse
 
 def home_view(request):
     return HttpResponse("<h1>Welcome to the home of chickens</h1>")
 
-class ProductViewset(viewsets.ModelViewSet):
-    serializer_class = ProductSerializer
+class ProductList(generics.ListCreateAPIView):
     queryset = Product.objects.all()
+    serializer_class = ProductSerializer
+
+class ProductDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Product.objects.all()
+    serializer_class = ProductSerializer
+
+class CategoryList(generics.ListCreateAPIView):
+    queryset = Category.objects.all()
+    serializer_class = CategorySerializer
+
+class CategoryDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Category.objects.all()
+    serializer_class = CategorySerializer

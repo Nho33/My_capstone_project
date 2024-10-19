@@ -30,3 +30,28 @@ class Profile(models.Model):
     address = models.CharField(max_length=100)
     user = models.OneToOneField(User, on_delete=models.CASCADE, null=True, blank=True) #One user can only have one profile and a profile can only belong to one user
     
+class Customer(models.Model):
+    first_name = models.CharField(max_length=50)
+    surname = models.CharField(max_length=50)
+    pic = models.URLField()
+    email = models.EmailField()
+
+    def __str__(self):
+        return f'{self.first_name} {self.surname}'
+    
+class Order(models.Model):
+    customer = models.ForeignKey(Customer, related_name='orders', on_delete=models.CASCADE)
+    order_date = models.DateTimeField(auto_now_add=True) # Only adds the date that the order is initially made. The date does not update every time the order is updated.
+    shipped_date = models.DateTimeField(null=True, blank=True)
+    is_paid = models.BooleanField(default=False) 
+
+    def __str__(self):
+        return f'Order {self.id} by {self.customer}'
+    
+class OrderItem(models.Model):
+    order = models.ForeignKey(Order, related_name='items', on_delete=models.CASCADE)
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    quantity = models.PositiveIntegerField()
+
+    def __str__(self):
+        return f'{self.quantity} of {self.product.name}'
