@@ -23,5 +23,7 @@ urlpatterns = [
     path('products/', include('api.urls')),
     path('home/', home_view),
     path('auth/', include('dj_rest_auth.urls')),
+    path('api/auth/', include('dj_rest_auth.urls')),  # Login, Logout, Password reset
+    path('api/auth/registration/', include('dj_rest_auth.registration.urls')),  # For users to Register
 
 ]
