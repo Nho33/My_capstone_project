@@ -17,13 +17,17 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from api.products.views import home_view
+from api.users.views import RegisterView, LogoutView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('products/', include('api.urls')),
-    path('home/', home_view),
+    path('', home_view, name='home'),
     path('auth/', include('dj_rest_auth.urls')),
     path('api/auth/', include('dj_rest_auth.urls')),  # Login, Logout, Password reset
     path('api/auth/registration/', include('dj_rest_auth.registration.urls')),  # For users to Register
+    path('accounts/', include('allauth.urls')), 
+    path('register/', RegisterView.as_view(), name='register'),  # Registration page
+    path('logout/', LogoutView.as_view(), name='logout'),
 
 ]
